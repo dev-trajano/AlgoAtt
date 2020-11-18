@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 public class BSTree <Key extends Comparable<Key>, Value> {
-	private static final String key = null;
 	private Node root;
 	
 	private class Node{
@@ -27,7 +26,7 @@ public class BSTree <Key extends Comparable<Key>, Value> {
 		return (root == null);
 	}
 	
-	public void inorfer () {
+	public void inorder () {
 		inorder(root);
 	}
 
@@ -36,6 +35,16 @@ public class BSTree <Key extends Comparable<Key>, Value> {
 		inorder(x.left);
 		System.out.println(x.key +" "+ x.val);
 		inorder(x.right);		
+	}
+	public void revorder () {
+		revorder(root);
+	}
+
+	private void revorder(Node x) {
+		if ( x == null) return;
+		revorder(x.right);
+		System.out.println(x.key +" "+ x.val);
+		revorder(x.left);		
 	}
 	
 	public void preorder() {
@@ -203,8 +212,7 @@ public class BSTree <Key extends Comparable<Key>, Value> {
 				tmp = br.readLine();
 				st = new StringTokenizer(tmp);
 				
-				city = new Cidade(st.nextToken(), j);
-				Integer.parseInt(st.nextToken());
+				city = new Cidade(st.nextToken(), Integer.parseInt(st.nextToken()));
 				mytree.put(city.getNome(), city);
 				
 			}
